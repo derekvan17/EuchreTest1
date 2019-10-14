@@ -14,7 +14,6 @@ namespace EuchreTest1
         public static void Deal()
         {
             Deck.Shuffle();
-            //Deck.WhichSuit(PlayersCards());
             Bidding.DetermineSuit();
             Ranks ranks = new Ranks();
         }

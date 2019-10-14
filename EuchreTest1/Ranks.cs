@@ -13,6 +13,8 @@ namespace EuchreTest1
         {
             GetRanks();
             DetermineRank();
+            Suits.AssignSuit();
+            Suits.SwitchJacks(Trump.WhichSuit(Dealer.FaceCard()));
         }
         public static void GetRanks()
         {
@@ -43,12 +45,12 @@ namespace EuchreTest1
                 cards.value[9] = (int)Rank.Queen;
                 cards.value[10] = (int)Rank.King;
                 cards.value[11] = (int)Rank.Ace;
-                cards.value[12] = (int)Rank.Nine;
-                cards.value[13] = (int)Rank.Ten;
+                cards.value[12] = (int)OppColorRank.Nine;
+                cards.value[13] = (int)OppColorRank.Ten;
                 cards.value[14] = (int)TrumpRank.Left;
-                cards.value[15] = (int)Rank.Queen;
-                cards.value[16] = (int)Rank.King;
-                cards.value[17] = (int)Rank.Ace;
+                cards.value[15] = (int)OppColorRank.Queen;
+                cards.value[16] = (int)OppColorRank.King;
+                cards.value[17] = (int)OppColorRank.Ace;
                 cards.value[18] = (int)Rank.Nine;
                 cards.value[19] = (int)Rank.Ten;
                 cards.value[20] = (int)Rank.Jack;
@@ -70,12 +72,12 @@ namespace EuchreTest1
                 cards.value[9] = (int)Rank.Queen;
                 cards.value[10] = (int)Rank.King;
                 cards.value[11] = (int)Rank.Ace;
-                cards.value[0] = (int)Rank.Nine;
-                cards.value[1] = (int)Rank.Ten;
+                cards.value[0] = (int)OppColorRank.Nine;
+                cards.value[1] = (int)OppColorRank.Ten;
                 cards.value[2] = (int)TrumpRank.Left;
-                cards.value[3] = (int)Rank.Queen;
-                cards.value[4] = (int)Rank.King;
-                cards.value[5] = (int)Rank.Ace;
+                cards.value[3] = (int)OppColorRank.Queen;
+                cards.value[4] = (int)OppColorRank.King;
+                cards.value[5] = (int)OppColorRank.Ace;
                 cards.value[18] = (int)Rank.Nine;
                 cards.value[19] = (int)Rank.Ten;
                 cards.value[20] = (int)Rank.Jack;
@@ -103,14 +105,14 @@ namespace EuchreTest1
                 cards.value[15] = (int)Rank.Queen;
                 cards.value[16] = (int)Rank.King;
                 cards.value[17] = (int)Rank.Ace;
-                cards.value[18] = (int)Rank.Nine;
-                cards.value[19] = (int)Rank.Ten;
+                cards.value[18] = (int)OppColorRank.Nine;
+                cards.value[19] = (int)OppColorRank.Ten;
                 cards.value[20] = (int)TrumpRank.Left;
-                cards.value[21] = (int)Rank.Queen;
-                cards.value[22] = (int)Rank.King;
-                cards.value[23] = (int)Rank.Ace;
+                cards.value[21] = (int)OppColorRank.Queen;
+                cards.value[22] = (int)OppColorRank.King;
+                cards.value[23] = (int)OppColorRank.Ace;
             }
-            else
+            else if (cards.trump == Suit.Hearts)
             {
                 cards.value[0] = (int)Rank.Nine;
                 cards.value[1] = (int)Rank.Ten;
@@ -130,12 +132,12 @@ namespace EuchreTest1
                 cards.value[15] = (int)Rank.Queen;
                 cards.value[16] = (int)Rank.King;
                 cards.value[17] = (int)Rank.Ace;
-                cards.value[6] = (int)Rank.Nine;
-                cards.value[7] = (int)Rank.Ten;
+                cards.value[6] = (int)OppColorRank.Nine;
+                cards.value[7] = (int)OppColorRank.Ten;
                 cards.value[8] = (int)TrumpRank.Left;
-                cards.value[9] = (int)Rank.Queen;
-                cards.value[10] = (int)Rank.King;
-                cards.value[11] = (int)Rank.Ace;
+                cards.value[9] = (int)OppColorRank.Queen;
+                cards.value[10] = (int)OppColorRank.King;
+                cards.value[11] = (int)OppColorRank.Ace;
             }
             return cards.value;
         }

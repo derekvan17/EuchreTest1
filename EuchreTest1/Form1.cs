@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static EuchreTest1.ImportDLL;
+using static EuchreTest1.Dealer;
 
 namespace EuchreTest1
 {
@@ -26,11 +27,11 @@ namespace EuchreTest1
 
         public void GetImages()
         {
-            pictureBox1.Image = images[Dealer.PlayersCards()[0]];
-            pictureBox2.Image = images[Dealer.PlayersCards()[1]];
-            pictureBox3.Image = images[Dealer.PlayersCards()[2]];
-            pictureBox4.Image = images[Dealer.PlayersCards()[3]];
-            pictureBox5.Image = images[Dealer.PlayersCards()[4]];
+            pictureBox1.Image = images[PlayersCards()[0]];
+            pictureBox2.Image = images[PlayersCards()[1]];
+            pictureBox3.Image = images[PlayersCards()[2]];
+            pictureBox4.Image = images[PlayersCards()[3]];
+            pictureBox5.Image = images[PlayersCards()[4]];
             pictureBox6.Image = images[32];
             pictureBox7.Image = images[32];
             pictureBox8.Image = images[32];
@@ -46,35 +47,44 @@ namespace EuchreTest1
             pictureBox18.Image = images[32];
             pictureBox19.Image = images[32];
             pictureBox20.Image = images[32];
-            pictureBox21.Image = images[Dealer.FaceCard()];
+            pictureBox21.Image = images[FaceCard()];
             pictureBox22.Image = images[32];
 
         }
 
         public void pictureBox1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(Ranks.cards.value[Dealer.PlayersCards()[0]]);
-            //Console.WriteLine()
+            Console.Write(Ranks.cards.value[PlayersCards()[0]]);
+            //Console.WriteLine("-" + Suits.WhichSuit(PlayersCards()[0]));
+            Console.WriteLine("-" + Ranks.cards.suit[PlayersCards()[0]]);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(Ranks.cards.value[Dealer.PlayersCards()[1]]);
+            Console.Write(Ranks.cards.value[PlayersCards()[1]]);
+            //Console.WriteLine("-" + Suits.WhichSuit(PlayersCards()[0]));
+            Console.WriteLine("-" + Ranks.cards.suit[PlayersCards()[1]]);
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(Ranks.cards.value[Dealer.PlayersCards()[2]]);
+            Console.Write(Ranks.cards.value[PlayersCards()[2]]);
+            //Console.WriteLine("-" + Suits.WhichSuit(PlayersCards()[0]));
+            Console.WriteLine("-" + Ranks.cards.suit[PlayersCards()[2]]);
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(Ranks.cards.value[Dealer.PlayersCards()[3]]);
+            Console.Write(Ranks.cards.value[PlayersCards()[3]]);
+            //Console.WriteLine("-" + Suits.WhichSuit(PlayersCards()[0]));
+            Console.WriteLine("-" + Ranks.cards.suit[PlayersCards()[3]]);
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(Ranks.cards.value[Dealer.PlayersCards()[4]]);
+            Console.Write(Ranks.cards.value[PlayersCards()[4]]);
+            //Console.WriteLine("-" + Suits.WhichSuit(PlayersCards()[0]));
+            Console.WriteLine("-" + Ranks.cards.suit[PlayersCards()[4]]);
         }
     }
 }

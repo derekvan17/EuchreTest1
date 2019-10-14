@@ -8,7 +8,6 @@ namespace EuchreTest1
 {
     class Bidding
     {
-
         public static Suit DetermineSuit()
         {
             return Trump.WhichSuit(Dealer.FaceCard());            

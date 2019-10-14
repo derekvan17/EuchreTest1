@@ -9,7 +9,7 @@ namespace EuchreTest1
     public struct Cards
     {
         public Suit trump;
-        public Suit suit;
+        public List<Suit> suit;
         public List<int> value;
 
     }
@@ -27,6 +27,15 @@ namespace EuchreTest1
         Nine,
         Ten,
         Jack,
+        Queen,
+        King,
+        Ace
+    }
+
+    public enum OppColorRank
+    {
+        Nine,
+        Ten,
         Queen,
         King,
         Ace
