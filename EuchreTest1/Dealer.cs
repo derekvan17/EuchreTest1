@@ -10,12 +10,38 @@ namespace EuchreTest1
 {
     class Dealer
     {
-
+        public static bool playerDeal, opp1Deal, partnerDeal, opp2Deal;
         public static void Deal()
         {
+            if (playerDeal)
+            {
+                opp1Deal = true;
+                playerDeal = false;
+            }
+
+            else if (opp1Deal)
+            {
+                partnerDeal = true;
+                opp1Deal = false;
+            }
+
+            else if (partnerDeal)
+            {
+                opp2Deal = true;
+                partnerDeal = false;
+            }
+
+            else if(opp2Deal)
+            {
+                playerDeal = true;
+                opp2Deal = false;
+            }
+                
+
             Deck.Shuffle();
             Bidding.DetermineSuit();
             Ranks ranks = new Ranks();
+            //Bidding.PlayerBid(PlayersCards());
         }
 
         public static List<int> PlayersCards()
@@ -41,22 +67,12 @@ namespace EuchreTest1
                 hand.Add(Deck.deck[i]);                
             }
 
+            hand.Sort();
+
             return hand;
         }
 
         public static List<int> Opp2Cards()
-        {
-            List<int> hand = new List<int>();
-
-            for (int i = 15; i < 20; i++)
-            {
-                hand.Add(Deck.deck[i]);
-            }
-
-            return hand;
-        }
-
-        public static List<int> PartnersCards()
         {
             List<int> hand = new List<int>();
 
@@ -65,8 +81,26 @@ namespace EuchreTest1
                 hand.Add(Deck.deck[i]);
             }
 
+            hand.Sort();
+
             return hand;
         }
+
+        public static List<int> PartnersCards()
+        {
+            List<int> hand = new List<int>();
+
+            for (int i = 15; i < 20; i++)
+            {
+                hand.Add(Deck.deck[i]);
+            }
+
+            hand.Sort();
+
+            return hand;
+        }
+
+
 
         public static int FaceCard()
         {

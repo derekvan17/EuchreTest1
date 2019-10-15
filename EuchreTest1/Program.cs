@@ -10,12 +10,15 @@ namespace EuchreTest1
 {
     static class Program
     {
+
         [STAThread]
         static void Main()
         {
+            Game.Init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             ImportDLL.Import();
+
             var form = new Form1();
             Application.Run(form);
         }

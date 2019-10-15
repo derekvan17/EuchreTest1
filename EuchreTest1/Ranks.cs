@@ -11,10 +11,9 @@ namespace EuchreTest1
         public static Cards cards;
         public Ranks()
         {
-            GetRanks();
             DetermineRank();
             Suits.AssignSuit();
-            Suits.SwitchJacks(Trump.WhichSuit(Dealer.FaceCard()));
+            Suits.SwitchJacks(Suits.TrumpSuit(Dealer.FaceCard()));
         }
         public static void GetRanks()
         {

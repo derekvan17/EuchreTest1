@@ -10,7 +10,69 @@ namespace EuchreTest1
     {
         public static Suit DetermineSuit()
         {
-            return Trump.WhichSuit(Dealer.FaceCard());            
-        }                
+            return Suits.TrumpSuit(Dealer.FaceCard());
+        }
+
+        public static void WhoIsDealer()
+        {
+
+        }
+        
+        public static int Bid(List<int> input, bool dealer)
+        {
+            int score = 0;
+
+            for(int i = 0; i <= 4; i++)
+            {
+                if (Ranks.cards.isTrump[input[i]] == true)
+                {
+                    if (Ranks.cards.value[input[i]] >= 5)
+                    {
+                        score++;
+                        score++;
+                        score++;
+                    }
+
+                    else if (Ranks.cards.value[input[i]] >= 2)
+                    {
+                        score++;
+                        score++;
+                    }
+
+                    else
+                    {
+                        score++;
+                    }
+                }
+
+                else if(Ranks.cards.value[input[i]] == 5)
+                {
+                    score++;
+                }
+            }
+
+            if(dealer)
+            {
+                if (Ranks.cards.value[Dealer.FaceCard()] >= 5)
+                {
+                    score++;
+                    score++;
+                    score++;
+                }
+
+                else if (Ranks.cards.value[Dealer.FaceCard()] >= 2)
+                {
+                    score++;
+                    score++;
+                }
+
+                else
+                {
+                    score++;
+                }
+            }
+
+            return score;
+        }
     }
 }
