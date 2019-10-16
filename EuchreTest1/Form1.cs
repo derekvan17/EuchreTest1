@@ -17,20 +17,89 @@ namespace EuchreTest1
         public Form1()
         {
             InitializeComponent();
+            ClearBoard();
+        }
+
+        private void ClearBoard()
+        {
             label1.Visible = false;
             label2.Visible = false;
             label3.Visible = false;
             label4.Visible = false;
+            playerPlayCard.Visible = false;
+            opp1PlayCard.Visible = false;
+            partnersPlayCard.Visible = false;
+            opp2PlayCard.Visible = false;
+            playerDecisionLbl.Visible = false;
+            opp1DecisionLbl.Visible = false;
+            partnerDecisionLbl.Visible = false;
+            opp2DecisionLbl.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ClearBoard();
             Deal();
             GetImages();
-            Console.WriteLine("Player's Pts: " + Convert.ToString(Bidding.Bid(PlayersCards(),playerDeal)));
-            Console.WriteLine("Opp 1's Pts: " + Convert.ToString(Bidding.Bid(Opp1Cards(),opp1Deal)));
-            Console.WriteLine("Partner's Pts: " + Convert.ToString(Bidding.Bid(PartnersCards(),partnerDeal)));
-            Console.WriteLine("Opp 2's Pts: " + Convert.ToString(Bidding.Bid(Opp2Cards(),opp2Deal)));
+            Console.WriteLine("Player's Pts: " + Convert.ToString(Bidding.BidPoints(PlayersCards(),playerDeal)));
+            if (Bidding.Bid(Bidding.BidPoints(PlayersCards(), playerDeal)) == 1)
+            {
+                playerDecisionLbl.Text = "Pick it up!";
+            }
+            else if (Bidding.Bid(Bidding.BidPoints(PlayersCards(), playerDeal)) == 2)
+            {
+                playerDecisionLbl.Text = "Alone!";
+            }
+            else
+            {
+                playerDecisionLbl.Text = "Pass";
+            }
+
+            Console.WriteLine("Opp 1's Pts: " + Convert.ToString(Bidding.BidPoints(Opp1Cards(),opp1Deal)));
+            if (Bidding.Bid(Bidding.BidPoints(Opp1Cards(), opp1Deal)) == 1)
+            {
+                opp1DecisionLbl.Text = "Pick it up!";
+            }
+            else if (Bidding.Bid(Bidding.BidPoints(Opp1Cards(), playerDeal)) == 2)
+            {
+                opp1DecisionLbl.Text = "Alone!";
+            }
+            else
+            {
+                opp1DecisionLbl.Text = "Pass";
+            }
+
+
+            Console.WriteLine("Partner's Pts: " + Convert.ToString(Bidding.BidPoints(PartnersCards(),partnerDeal)));
+            if (Bidding.Bid(Bidding.BidPoints(PartnersCards(), partnerDeal)) == 1)
+            {
+                partnerDecisionLbl.Text = "Pick it up!";
+            }
+            else if (Bidding.Bid(Bidding.BidPoints(PartnersCards(), playerDeal)) == 2)
+            {
+                partnerDecisionLbl.Text = "Alone!";
+            }
+            else
+            {
+                partnerDecisionLbl.Text = "Pass";
+            }
+
+
+            Console.WriteLine("Opp 2's Pts: " + Convert.ToString(Bidding.BidPoints(Opp2Cards(),opp2Deal)));
+            if (Bidding.Bid(Bidding.BidPoints(Opp2Cards(), opp2Deal)) == 1)
+            {
+                opp2DecisionLbl.Text = "Pick it up!";
+            }
+            else if (Bidding.Bid(Bidding.BidPoints(Opp2Cards(), playerDeal)) == 2)
+            {
+                opp2DecisionLbl.Text = "Alone!";
+            }
+            else
+            {
+                opp2DecisionLbl.Text = "Pass";
+            }
+
+
             Console.WriteLine();
             
             if(playerDeal)
@@ -68,131 +137,121 @@ namespace EuchreTest1
 
         public void GetImages()
         {
-            pictureBox1.Image = images[PlayersCards()[0]];
-            pictureBox2.Image = images[PlayersCards()[1]];
-            pictureBox3.Image = images[PlayersCards()[2]];
-            pictureBox4.Image = images[PlayersCards()[3]];
-            pictureBox5.Image = images[PlayersCards()[4]];
+            playerCard0.Image = images[PlayersCards()[0]];
+            playerCard1.Image = images[PlayersCards()[1]];
+            playerCard2.Image = images[PlayersCards()[2]];
+            playerCard3.Image = images[PlayersCards()[3]];
+            playerCard4.Image = images[PlayersCards()[4]];
             //correct UI commented out for troubleshooting
-            /*pictureBox6.Image = images[32];
-            pictureBox7.Image = images[32];
-            pictureBox8.Image = images[32];
-            pictureBox9.Image = images[32];
-            pictureBox10.Image = images[32];
-            pictureBox11.Image = images[32];
-            pictureBox12.Image = images[32];
-            pictureBox13.Image = images[32];
-            pictureBox14.Image = images[32];
-            pictureBox15.Image = images[32];
-            pictureBox16.Image = images[32];
-            pictureBox17.Image = images[32];
-            pictureBox18.Image = images[32];
-            pictureBox19.Image = images[32];
-            pictureBox20.Image = images[32];*/
-            pictureBox6.Image = images[Opp1Cards()[0]];
-            pictureBox7.Image = images[Opp1Cards()[1]];
-            pictureBox8.Image = images[Opp1Cards()[2]];
-            pictureBox9.Image = images[Opp1Cards()[3]];
-            pictureBox10.Image = images[Opp1Cards()[4]];
-            pictureBox11.Image = images[Opp2Cards()[0]];
-            pictureBox12.Image = images[Opp2Cards()[1]];
-            pictureBox13.Image = images[Opp2Cards()[2]];
-            pictureBox14.Image = images[Opp2Cards()[3]];
-            pictureBox15.Image = images[Opp2Cards()[4]];
-            pictureBox16.Image = images[PartnersCards()[0]];
-            pictureBox17.Image = images[PartnersCards()[1]];
-            pictureBox18.Image = images[PartnersCards()[2]];
-            pictureBox19.Image = images[PartnersCards()[3]];
-            pictureBox20.Image = images[PartnersCards()[4]];
+            /*opp1Card0.Image.Image = images[32];
+            opp1Card1.Image.Image = images[32];
+            opp1Card2.Image.Image = images[32];
+            opp1Card3.Image.Image = images[32];
+            opp1Card4.Image.Image = images[32];
+            opp2Card0.Image.Image = images[32];
+            opp2Card1.Image = images[32];
+            opp2Card2.Image = images[32];
+            opp2Card3.Image = images[32];
+            opp2Card4.Image = images[32];
+            partnerCard0.Image = images[32];
+            partnerCard1.Image = images[32];
+            partnerCard2.Image = images[32];
+            partnerCard3.Image = images[32];
+            partnerCard4.Image = images[32];*/
+            opp1Card0.Image = images[Opp1Cards()[0]];
+            opp1Card1.Image = images[Opp1Cards()[1]];
+            opp1Card2.Image = images[Opp1Cards()[2]];
+            opp1Card3.Image = images[Opp1Cards()[3]];
+            opp1Card4.Image = images[Opp1Cards()[4]];
+            opp2Card0.Image = images[Opp2Cards()[0]];
+            opp2Card1.Image = images[Opp2Cards()[1]];
+            opp2Card2.Image = images[Opp2Cards()[2]];
+            opp2Card3.Image = images[Opp2Cards()[3]];
+            opp2Card4.Image = images[Opp2Cards()[4]];
+            partnerCard0.Image = images[PartnersCards()[0]];
+            partnerCard1.Image = images[PartnersCards()[1]];
+            partnerCard2.Image = images[PartnersCards()[2]];
+            partnerCard3.Image = images[PartnersCards()[3]];
+            partnerCard4.Image = images[PartnersCards()[4]];
             //the following two lines are always correct
-            pictureBox21.Image = images[FaceCard()];
-            pictureBox22.Image = images[32];
+            faceCard.Image = images[FaceCard()];
+            kittyCards.Image = images[32];
 
         }
 
-        public void pictureBox1_Click(object sender, EventArgs e)
+        public void playerCard0_Click(object sender, EventArgs e)
         {
-            Console.Write(Ranks.cards.value[PlayersCards()[0]]);
-
-            if (Ranks.cards.isTrump[PlayersCards()[0]] == true)
-            {
-                Console.Write("-" + Ranks.cards.suit[PlayersCards()[0]]);
-                Console.WriteLine(" This is a trump card!");
-            }
-
-            else
-            {
-                Console.WriteLine("-" + Ranks.cards.suit[PlayersCards()[0]]);
-            }
+            //playerPlayCard.Visible = true;
+            //playerPlayCard.Image = playerCard0.Image;
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void playerCard1_Click(object sender, EventArgs e)
         {
-            Console.Write(Ranks.cards.value[PlayersCards()[1]]);
-
-            if (Ranks.cards.isTrump[PlayersCards()[1]] == true)
-            {
-                Console.Write("-" + Ranks.cards.suit[PlayersCards()[1]]);
-                Console.WriteLine(" This is a trump card!");
-            }
-
-            else
-            {
-                Console.WriteLine("-" + Ranks.cards.suit[PlayersCards()[1]]);
-            }
+            //playerPlayCard.Visible = true;
+            //playerPlayCard.Image = playerCard1.Image;
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void playerCard2_Click(object sender, EventArgs e)
         {
-            Console.Write(Ranks.cards.value[PlayersCards()[2]]);
-
-            if (Ranks.cards.isTrump[PlayersCards()[2]] == true)
-            {
-                Console.Write("-" + Ranks.cards.suit[PlayersCards()[2]]);
-                Console.WriteLine(" This is a trump card!");
-            }
-
-            else
-            {
-                Console.WriteLine("-" + Ranks.cards.suit[PlayersCards()[2]]);
-            }
+            //playerPlayCard.Visible = true;
+            //playerPlayCard.Image = playerCard2.Image;
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void playerCard3_Click(object sender, EventArgs e)
         {
-            Console.Write(Ranks.cards.value[PlayersCards()[3]]);
-
-            if (Ranks.cards.isTrump[PlayersCards()[3]] == true)
-            {
-                Console.Write("-" + Ranks.cards.suit[PlayersCards()[3]]);
-                Console.WriteLine(" This is a trump card!");
-            }
-
-            else
-            {
-                Console.WriteLine("-" + Ranks.cards.suit[PlayersCards()[3]]);
-            }
+            //playerPlayCard.Visible = true;
+            //playerPlayCard.Image = playerCard3.Image;
         }
 
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void playerCard4_Click(object sender, EventArgs e)
         {
-            Console.Write(Ranks.cards.value[PlayersCards()[4]]);
-
-            if (Ranks.cards.isTrump[PlayersCards()[4]] == true)
-            {
-                Console.Write("-" + Ranks.cards.suit[PlayersCards()[4]]);
-                Console.WriteLine("  This is a trump card!");
-            }
-
-            else
-            {
-                Console.WriteLine("-" + Ranks.cards.suit[PlayersCards()[4]]);
-            }
+            //playerPlayCard.Visible = true;
+            //playerPlayCard.Image = playerCard4.Image;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if(Game.turn < 3)
+            {
+                Game.turn++;
+            }
 
+            else
+            {
+                Game.turn = 0;
+            }
+
+            if (Game.turn == 0)
+            {
+                playerDecisionLbl.Visible = false;
+                opp1DecisionLbl.Visible = true;
+                partnerDecisionLbl.Visible = false;
+                opp2DecisionLbl.Visible = false;
+            }
+
+            if (Game.turn == 1)
+            {
+                playerDecisionLbl.Visible = false;
+                opp1DecisionLbl.Visible = false;
+                partnerDecisionLbl.Visible = true;
+                opp2DecisionLbl.Visible = false;
+            }
+
+            if (Game.turn == 2)
+            {
+                playerDecisionLbl.Visible = false;
+                opp1DecisionLbl.Visible = false;
+                partnerDecisionLbl.Visible = false;
+                opp2DecisionLbl.Visible = true;
+            }
+
+            if (Game.turn == 3)
+            {
+                playerDecisionLbl.Visible = true;
+                opp1DecisionLbl.Visible = false;
+                partnerDecisionLbl.Visible = false;
+                opp2DecisionLbl.Visible = false;
+            }
         }
     }
 }

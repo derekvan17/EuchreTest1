@@ -12,13 +12,8 @@ namespace EuchreTest1
         {
             return Suits.TrumpSuit(Dealer.FaceCard());
         }
-
-        public static void WhoIsDealer()
-        {
-
-        }
         
-        public static int Bid(List<int> input, bool dealer)
+        public static int BidPoints(List<int> input, bool dealer)
         {
             int score = 0;
 
@@ -71,8 +66,25 @@ namespace EuchreTest1
                     score++;
                 }
             }
-
             return score;
         }
-    }
+
+        public static int Bid (int input)
+        {
+            if (input >= 10)
+            {
+                return 2;
+            }
+
+            else if (input >= 7)
+            {
+                return 1;
+            }
+
+            else
+            {
+                return 0;
+            }
+        }
+     }
 }

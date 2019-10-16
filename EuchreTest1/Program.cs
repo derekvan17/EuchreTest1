@@ -13,10 +13,11 @@ namespace EuchreTest1
 
         [STAThread]
         static void Main()
-        {
-            Game.Init();
+        {            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            Game.RandomDeal();
             ImportDLL.Import();
 
             var form = new Form1();
