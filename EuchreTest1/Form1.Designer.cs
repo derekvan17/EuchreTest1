@@ -64,6 +64,10 @@
             this.partnerDecisionLbl = new System.Windows.Forms.Label();
             this.opp2DecisionLbl = new System.Windows.Forms.Label();
             this.playerDecisionLbl = new System.Windows.Forms.Label();
+            this.diamondsButton = new System.Windows.Forms.Button();
+            this.spadesButton = new System.Windows.Forms.Button();
+            this.heartsButton = new System.Windows.Forms.Button();
+            this.clubsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.playerCard0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerCard2)).BeginInit();
@@ -335,7 +339,7 @@
             // 
             // playerPlayCard
             // 
-            this.playerPlayCard.Location = new System.Drawing.Point(279, 282);
+            this.playerPlayCard.Location = new System.Drawing.Point(280, 282);
             this.playerPlayCard.Name = "playerPlayCard";
             this.playerPlayCard.Size = new System.Drawing.Size(78, 97);
             this.playerPlayCard.TabIndex = 28;
@@ -401,12 +405,57 @@
             this.playerDecisionLbl.TabIndex = 35;
             this.playerDecisionLbl.Text = "playerDecision";
             // 
+            // diamondsButton
+            // 
+            this.diamondsButton.BackColor = System.Drawing.Color.White;
+            this.diamondsButton.Location = new System.Drawing.Point(538, 25);
+            this.diamondsButton.Name = "diamondsButton";
+            this.diamondsButton.Size = new System.Drawing.Size(22, 26);
+            this.diamondsButton.TabIndex = 36;
+            this.diamondsButton.UseVisualStyleBackColor = false;
+            this.diamondsButton.Click += new System.EventHandler(this.diamondsButton_Click);
+            // 
+            // spadesButton
+            // 
+            this.spadesButton.BackColor = System.Drawing.Color.White;
+            this.spadesButton.Location = new System.Drawing.Point(558, 25);
+            this.spadesButton.Name = "spadesButton";
+            this.spadesButton.Size = new System.Drawing.Size(22, 26);
+            this.spadesButton.TabIndex = 37;
+            this.spadesButton.UseVisualStyleBackColor = false;
+            this.spadesButton.Click += new System.EventHandler(this.spadesButton_Click);
+            // 
+            // heartsButton
+            // 
+            this.heartsButton.BackColor = System.Drawing.Color.White;
+            this.heartsButton.Location = new System.Drawing.Point(578, 25);
+            this.heartsButton.Name = "heartsButton";
+            this.heartsButton.Size = new System.Drawing.Size(22, 26);
+            this.heartsButton.TabIndex = 38;
+            this.heartsButton.UseVisualStyleBackColor = false;
+            this.heartsButton.Click += new System.EventHandler(this.heartsButton_Click);
+            // 
+            // clubsButton
+            // 
+            this.clubsButton.BackColor = System.Drawing.Color.White;
+            this.clubsButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.clubsButton.Location = new System.Drawing.Point(518, 25);
+            this.clubsButton.Name = "clubsButton";
+            this.clubsButton.Size = new System.Drawing.Size(22, 26);
+            this.clubsButton.TabIndex = 39;
+            this.clubsButton.UseVisualStyleBackColor = false;
+            this.clubsButton.Click += new System.EventHandler(this.clubsButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.ClientSize = new System.Drawing.Size(637, 596);
+            this.Controls.Add(this.clubsButton);
+            this.Controls.Add(this.heartsButton);
+            this.Controls.Add(this.spadesButton);
+            this.Controls.Add(this.diamondsButton);
             this.Controls.Add(this.playerDecisionLbl);
             this.Controls.Add(this.opp2DecisionLbl);
             this.Controls.Add(this.partnerDecisionLbl);
@@ -514,6 +563,11 @@
         public System.Windows.Forms.Label partnerDecisionLbl;
         public System.Windows.Forms.Label opp2DecisionLbl;
         public System.Windows.Forms.Label playerDecisionLbl;
+        public System.Windows.Forms.Button clubsButton;
+        public System.Windows.Forms.Button diamondsButton;
+        public System.Windows.Forms.Button spadesButton;
+        public System.Windows.Forms.Button heartsButton;
+        
     }
 }
 

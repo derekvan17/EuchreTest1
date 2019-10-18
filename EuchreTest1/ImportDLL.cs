@@ -42,7 +42,7 @@ namespace EuchreTest1
             var hMod = LoadLibraryEx("libs/cards.dll", IntPtr.Zero, 0);
 
             //here we assign each card image to an integer      
-            for (int i = 0; i < 48; i++)
+            for (int i = 0; i < 57; i++)
             {
 
                 images.Add(i, Bitmap.FromResource(hMod, "#" + Convert.ToString(i)));

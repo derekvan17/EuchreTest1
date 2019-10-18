@@ -18,6 +18,8 @@ namespace EuchreTest1
         {
             InitializeComponent();
             ClearBoard();
+            //Deal();
+            //GetImages();
         }
 
         private void ClearBoard()
@@ -34,11 +36,19 @@ namespace EuchreTest1
             opp1DecisionLbl.Visible = false;
             partnerDecisionLbl.Visible = false;
             opp2DecisionLbl.Visible = false;
+            clubsButton.Visible = false;
+            diamondsButton.Visible = false;
+            spadesButton.Visible = false;
+            heartsButton.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             ClearBoard();
+            clubsButton.Visible = true;
+            diamondsButton.Visible = true;
+            spadesButton.Visible = true;
+            heartsButton.Visible = true;
             Deal();
             GetImages();
             Console.WriteLine("Player's Pts: " + Convert.ToString(Bidding.BidPoints(PlayersCards(),playerDeal)));
@@ -176,6 +186,10 @@ namespace EuchreTest1
             //the following two lines are always correct
             faceCard.Image = images[FaceCard()];
             kittyCards.Image = images[32];
+            clubsButton.Image = images[49];
+            diamondsButton.Image = images[50];
+            spadesButton.Image = images[51];
+            heartsButton.Image = images[52];
 
         }
 
@@ -252,6 +266,26 @@ namespace EuchreTest1
                 partnerDecisionLbl.Visible = false;
                 opp2DecisionLbl.Visible = false;
             }
+        }
+
+        private void clubsButton_Click(object sender, EventArgs e)
+        {
+            clubsButton.Image = images[53];
+        }
+
+        private void diamondsButton_Click(object sender, EventArgs e)
+        {
+            diamondsButton.Image = images[54];
+        }
+
+        private void spadesButton_Click(object sender, EventArgs e)
+        {
+            spadesButton.Image = images[55];
+        }
+
+        private void heartsButton_Click(object sender, EventArgs e)
+        {
+            heartsButton.Image = images[56];
         }
     }
 }

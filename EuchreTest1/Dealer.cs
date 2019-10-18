@@ -11,6 +11,7 @@ namespace EuchreTest1
     class Dealer
     {
         public static bool playerDeal, opp1Deal, partnerDeal, opp2Deal;
+
         public static void Deal()
         {
 

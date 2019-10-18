@@ -19,9 +19,10 @@ namespace EuchreTest1
 
             Game.RandomDeal();
             ImportDLL.Import();
-
+            
             var form = new Form1();
             Application.Run(form);
+
         }
     }
 }
