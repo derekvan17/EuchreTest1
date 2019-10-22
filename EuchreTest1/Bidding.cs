@@ -32,6 +32,7 @@ namespace EuchreTest1
                     {
                         score++;
                         score++;
+
                     }
 
                     else

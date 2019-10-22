@@ -35,7 +35,6 @@
             this.playerCard4 = new System.Windows.Forms.PictureBox();
             this.opp1Card0 = new System.Windows.Forms.PictureBox();
             this.opp1Card1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.opp1Card2 = new System.Windows.Forms.PictureBox();
             this.opp1Card3 = new System.Windows.Forms.PictureBox();
             this.opp1Card4 = new System.Windows.Forms.PictureBox();
@@ -55,7 +54,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.passButton = new System.Windows.Forms.Button();
             this.playerPlayCard = new System.Windows.Forms.PictureBox();
             this.opp1PlayCard = new System.Windows.Forms.PictureBox();
             this.partnersPlayCard = new System.Windows.Forms.PictureBox();
@@ -68,6 +67,7 @@
             this.spadesButton = new System.Windows.Forms.Button();
             this.heartsButton = new System.Windows.Forms.Button();
             this.clubsButton = new System.Windows.Forms.Button();
+            this.orderUpButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.playerCard0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerCard2)).BeginInit();
@@ -156,16 +156,6 @@
             this.opp1Card1.Size = new System.Drawing.Size(78, 95);
             this.opp1Card1.TabIndex = 6;
             this.opp1Card1.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(279, -1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Shuffle";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // opp1Card2
             // 
@@ -327,19 +317,19 @@
             this.label4.TabIndex = 26;
             this.label4.Text = "Dealer";
             // 
-            // button2
+            // passButton
             // 
-            this.button2.Location = new System.Drawing.Point(279, 530);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 23);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Pass";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.passButton.Location = new System.Drawing.Point(236, 541);
+            this.passButton.Name = "passButton";
+            this.passButton.Size = new System.Drawing.Size(78, 23);
+            this.passButton.TabIndex = 27;
+            this.passButton.Text = "Pass";
+            this.passButton.UseVisualStyleBackColor = true;
+            this.passButton.Click += new System.EventHandler(this.passButton_Click);
             // 
             // playerPlayCard
             // 
-            this.playerPlayCard.Location = new System.Drawing.Point(280, 282);
+            this.playerPlayCard.Location = new System.Drawing.Point(279, 272);
             this.playerPlayCard.Name = "playerPlayCard";
             this.playerPlayCard.Size = new System.Drawing.Size(78, 97);
             this.playerPlayCard.TabIndex = 28;
@@ -408,7 +398,7 @@
             // diamondsButton
             // 
             this.diamondsButton.BackColor = System.Drawing.Color.White;
-            this.diamondsButton.Location = new System.Drawing.Point(538, 25);
+            this.diamondsButton.Location = new System.Drawing.Point(341, 539);
             this.diamondsButton.Name = "diamondsButton";
             this.diamondsButton.Size = new System.Drawing.Size(22, 26);
             this.diamondsButton.TabIndex = 36;
@@ -418,7 +408,7 @@
             // spadesButton
             // 
             this.spadesButton.BackColor = System.Drawing.Color.White;
-            this.spadesButton.Location = new System.Drawing.Point(558, 25);
+            this.spadesButton.Location = new System.Drawing.Point(361, 539);
             this.spadesButton.Name = "spadesButton";
             this.spadesButton.Size = new System.Drawing.Size(22, 26);
             this.spadesButton.TabIndex = 37;
@@ -428,7 +418,7 @@
             // heartsButton
             // 
             this.heartsButton.BackColor = System.Drawing.Color.White;
-            this.heartsButton.Location = new System.Drawing.Point(578, 25);
+            this.heartsButton.Location = new System.Drawing.Point(381, 539);
             this.heartsButton.Name = "heartsButton";
             this.heartsButton.Size = new System.Drawing.Size(22, 26);
             this.heartsButton.TabIndex = 38;
@@ -439,12 +429,22 @@
             // 
             this.clubsButton.BackColor = System.Drawing.Color.White;
             this.clubsButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.clubsButton.Location = new System.Drawing.Point(518, 25);
+            this.clubsButton.Location = new System.Drawing.Point(321, 539);
             this.clubsButton.Name = "clubsButton";
             this.clubsButton.Size = new System.Drawing.Size(22, 26);
             this.clubsButton.TabIndex = 39;
             this.clubsButton.UseVisualStyleBackColor = false;
             this.clubsButton.Click += new System.EventHandler(this.clubsButton_Click);
+            // 
+            // orderUpButton
+            // 
+            this.orderUpButton.Location = new System.Drawing.Point(320, 541);
+            this.orderUpButton.Name = "orderUpButton";
+            this.orderUpButton.Size = new System.Drawing.Size(75, 23);
+            this.orderUpButton.TabIndex = 40;
+            this.orderUpButton.Text = "Order Up";
+            this.orderUpButton.UseVisualStyleBackColor = true;
+            this.orderUpButton.Click += new System.EventHandler(this.orderUpButton_Click);
             // 
             // Form1
             // 
@@ -452,6 +452,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.ClientSize = new System.Drawing.Size(637, 596);
+            this.Controls.Add(this.orderUpButton);
             this.Controls.Add(this.clubsButton);
             this.Controls.Add(this.heartsButton);
             this.Controls.Add(this.spadesButton);
@@ -465,7 +466,7 @@
             this.Controls.Add(this.opp1PlayCard);
             this.Controls.Add(this.playerPlayCard);
             this.Controls.Add(this.partnerCard0);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.passButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -481,7 +482,6 @@
             this.Controls.Add(this.opp1Card1);
             this.Controls.Add(this.opp1Card2);
             this.Controls.Add(this.opp1Card3);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.playerCard4);
             this.Controls.Add(this.playerCard2);
             this.Controls.Add(this.playerCard3);
@@ -526,8 +526,6 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.Button button1;
         public System.Windows.Forms.PictureBox playerCard0;
         public System.Windows.Forms.PictureBox playerCard1;
         public System.Windows.Forms.PictureBox playerCard2;
@@ -554,7 +552,7 @@
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label label4;
-        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button passButton;
         public System.Windows.Forms.PictureBox playerPlayCard;
         public System.Windows.Forms.PictureBox opp1PlayCard;
         public System.Windows.Forms.PictureBox partnersPlayCard;
@@ -567,7 +565,7 @@
         public System.Windows.Forms.Button diamondsButton;
         public System.Windows.Forms.Button spadesButton;
         public System.Windows.Forms.Button heartsButton;
-        
+        public System.Windows.Forms.Button orderUpButton;
     }
 }
 
