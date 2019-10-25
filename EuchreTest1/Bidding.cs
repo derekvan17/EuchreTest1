@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace EuchreTest1
 {
     class Bidding
     {
-        public static Suit DetermineSuit()
+        public static bool bidActive { get; set; }
+        public static int PassCount { get; set; }
+        public static Suit FaceCardSuit()
         {
             return Suits.TrumpSuit(Dealer.FaceCard());
         }
@@ -32,7 +35,6 @@ namespace EuchreTest1
                     {
                         score++;
                         score++;
-
                     }
 
                     else
@@ -70,7 +72,44 @@ namespace EuchreTest1
             return score;
         }
 
-        public static int Bid (int input)
+        public static int BidPoints2(List<int> input, bool dealer)
+        {
+            int score = 0;
+
+            for (int i = 0; i <= 4; i++)
+            {
+                if (Ranks.cards.isTrump[input[i]] == true)
+                {
+                    if (Ranks.cards.value[input[i]] >= 5)
+                    {
+                        score++;
+                        score++;
+                        score++;
+                    }
+
+                    else if (Ranks.cards.value[input[i]] >= 2)
+                    {
+                        score++;
+                        score++;
+                    }
+
+                    else
+                    {
+                        score++;
+                    }
+                }
+
+                else if (Ranks.cards.value[input[i]] == 5)
+                {
+                    score++;
+                }
+            }
+
+            return score;
+        }
+
+
+        public static int BidDecision (int input)
         {
             if (input >= 10)
             {
@@ -85,6 +124,32 @@ namespace EuchreTest1
             else
             {
                 return 0;
+            }
+        }
+
+        public static void Bid()
+        {
+            while (bidActive)
+            {
+                Thread.Sleep(1000);
+
+                PassCount++;
+                
+
+                if (Game.turn < 3)
+                {
+                    Game.turn++;
+                }
+
+                else
+                {
+                    Game.turn = 0;
+                }
+
+                Console.WriteLine("PassCount = " + Convert.ToString(PassCount));
+
+                Console.WriteLine("Turn = " + Convert.ToString(Game.turn));
+
             }
         }
      }

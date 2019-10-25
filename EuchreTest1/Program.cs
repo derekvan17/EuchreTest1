@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -20,7 +21,8 @@ namespace EuchreTest1
             Game.RandomDeal();
             ImportDLL.Import();
             
-            var form = new Form1();
+            var form = new Menu();
+            //form.ShowDialog();
             Application.Run(form);
 
         }

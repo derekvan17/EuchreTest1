@@ -63,10 +63,6 @@
             this.partnerDecisionLbl = new System.Windows.Forms.Label();
             this.opp2DecisionLbl = new System.Windows.Forms.Label();
             this.playerDecisionLbl = new System.Windows.Forms.Label();
-            this.diamondsButton = new System.Windows.Forms.Button();
-            this.spadesButton = new System.Windows.Forms.Button();
-            this.heartsButton = new System.Windows.Forms.Button();
-            this.clubsButton = new System.Windows.Forms.Button();
             this.orderUpButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.playerCard0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerCard1)).BeginInit();
@@ -319,7 +315,7 @@
             // 
             // passButton
             // 
-            this.passButton.Location = new System.Drawing.Point(236, 541);
+            this.passButton.Location = new System.Drawing.Point(279, 531);
             this.passButton.Name = "passButton";
             this.passButton.Size = new System.Drawing.Size(78, 23);
             this.passButton.TabIndex = 27;
@@ -395,50 +391,9 @@
             this.playerDecisionLbl.TabIndex = 35;
             this.playerDecisionLbl.Text = "playerDecision";
             // 
-            // diamondsButton
-            // 
-            this.diamondsButton.BackColor = System.Drawing.Color.White;
-            this.diamondsButton.Location = new System.Drawing.Point(341, 539);
-            this.diamondsButton.Name = "diamondsButton";
-            this.diamondsButton.Size = new System.Drawing.Size(22, 26);
-            this.diamondsButton.TabIndex = 36;
-            this.diamondsButton.UseVisualStyleBackColor = false;
-            this.diamondsButton.Click += new System.EventHandler(this.diamondsButton_Click);
-            // 
-            // spadesButton
-            // 
-            this.spadesButton.BackColor = System.Drawing.Color.White;
-            this.spadesButton.Location = new System.Drawing.Point(361, 539);
-            this.spadesButton.Name = "spadesButton";
-            this.spadesButton.Size = new System.Drawing.Size(22, 26);
-            this.spadesButton.TabIndex = 37;
-            this.spadesButton.UseVisualStyleBackColor = false;
-            this.spadesButton.Click += new System.EventHandler(this.spadesButton_Click);
-            // 
-            // heartsButton
-            // 
-            this.heartsButton.BackColor = System.Drawing.Color.White;
-            this.heartsButton.Location = new System.Drawing.Point(381, 539);
-            this.heartsButton.Name = "heartsButton";
-            this.heartsButton.Size = new System.Drawing.Size(22, 26);
-            this.heartsButton.TabIndex = 38;
-            this.heartsButton.UseVisualStyleBackColor = false;
-            this.heartsButton.Click += new System.EventHandler(this.heartsButton_Click);
-            // 
-            // clubsButton
-            // 
-            this.clubsButton.BackColor = System.Drawing.Color.White;
-            this.clubsButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.clubsButton.Location = new System.Drawing.Point(321, 539);
-            this.clubsButton.Name = "clubsButton";
-            this.clubsButton.Size = new System.Drawing.Size(22, 26);
-            this.clubsButton.TabIndex = 39;
-            this.clubsButton.UseVisualStyleBackColor = false;
-            this.clubsButton.Click += new System.EventHandler(this.clubsButton_Click);
-            // 
             // orderUpButton
             // 
-            this.orderUpButton.Location = new System.Drawing.Point(320, 541);
+            this.orderUpButton.Location = new System.Drawing.Point(279, 561);
             this.orderUpButton.Name = "orderUpButton";
             this.orderUpButton.Size = new System.Drawing.Size(75, 23);
             this.orderUpButton.TabIndex = 40;
@@ -453,10 +408,6 @@
             this.BackColor = System.Drawing.Color.LimeGreen;
             this.ClientSize = new System.Drawing.Size(637, 596);
             this.Controls.Add(this.orderUpButton);
-            this.Controls.Add(this.clubsButton);
-            this.Controls.Add(this.heartsButton);
-            this.Controls.Add(this.spadesButton);
-            this.Controls.Add(this.diamondsButton);
             this.Controls.Add(this.playerDecisionLbl);
             this.Controls.Add(this.opp2DecisionLbl);
             this.Controls.Add(this.partnerDecisionLbl);
@@ -493,6 +444,7 @@
             this.Controls.Add(this.partnerCard3);
             this.Controls.Add(this.partnerCard4);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Euchre!";
             ((System.ComponentModel.ISupportInitialize)(this.playerCard0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerCard1)).EndInit();
@@ -526,46 +478,42 @@
         }
 
         #endregion
-        public System.Windows.Forms.PictureBox playerCard0;
-        public System.Windows.Forms.PictureBox playerCard1;
-        public System.Windows.Forms.PictureBox playerCard2;
-        public System.Windows.Forms.PictureBox playerCard3;
-        public System.Windows.Forms.PictureBox playerCard4;
-        public System.Windows.Forms.PictureBox opp1Card0;
-        public System.Windows.Forms.PictureBox opp1Card1;        
-        public System.Windows.Forms.PictureBox opp1Card2;
-        public System.Windows.Forms.PictureBox opp1Card3;
-        public System.Windows.Forms.PictureBox opp1Card4;
-        public System.Windows.Forms.PictureBox opp2Card0;
-        public System.Windows.Forms.PictureBox opp2Card1;
-        public System.Windows.Forms.PictureBox opp2Card2;
-        public System.Windows.Forms.PictureBox opp2Card3;
-        public System.Windows.Forms.PictureBox opp2Card4;
-        public System.Windows.Forms.PictureBox partnerCard0;
-        public System.Windows.Forms.PictureBox partnerCard1;
-        public System.Windows.Forms.PictureBox partnerCard2;
-        public System.Windows.Forms.PictureBox partnerCard3;
-        public System.Windows.Forms.PictureBox partnerCard4;
-        public System.Windows.Forms.PictureBox faceCard;
-        public System.Windows.Forms.PictureBox kittyCards;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Label label3;
-        public System.Windows.Forms.Label label4;
-        public System.Windows.Forms.Button passButton;
-        public System.Windows.Forms.PictureBox playerPlayCard;
-        public System.Windows.Forms.PictureBox opp1PlayCard;
-        public System.Windows.Forms.PictureBox partnersPlayCard;
-        public System.Windows.Forms.PictureBox opp2PlayCard;
-        public System.Windows.Forms.Label opp1DecisionLbl;
-        public System.Windows.Forms.Label partnerDecisionLbl;
-        public System.Windows.Forms.Label opp2DecisionLbl;
-        public System.Windows.Forms.Label playerDecisionLbl;
-        public System.Windows.Forms.Button clubsButton;
-        public System.Windows.Forms.Button diamondsButton;
-        public System.Windows.Forms.Button spadesButton;
-        public System.Windows.Forms.Button heartsButton;
-        public System.Windows.Forms.Button orderUpButton;
+        private System.Windows.Forms.PictureBox playerCard0;
+        private System.Windows.Forms.PictureBox playerCard1;
+        private System.Windows.Forms.PictureBox playerCard2;
+        private System.Windows.Forms.PictureBox playerCard3;
+        private System.Windows.Forms.PictureBox playerCard4;
+        private System.Windows.Forms.PictureBox opp1Card0;
+        private System.Windows.Forms.PictureBox opp1Card1;
+        private System.Windows.Forms.PictureBox opp1Card2;
+        private System.Windows.Forms.PictureBox opp1Card3;
+        private System.Windows.Forms.PictureBox opp1Card4;
+        private System.Windows.Forms.PictureBox opp2Card0;
+        private System.Windows.Forms.PictureBox opp2Card1;
+        private System.Windows.Forms.PictureBox opp2Card2;
+        private System.Windows.Forms.PictureBox opp2Card3;
+        private System.Windows.Forms.PictureBox opp2Card4;
+        private System.Windows.Forms.PictureBox partnerCard0;
+        private System.Windows.Forms.PictureBox partnerCard1;
+        private System.Windows.Forms.PictureBox partnerCard2;
+        private System.Windows.Forms.PictureBox partnerCard3;
+        private System.Windows.Forms.PictureBox partnerCard4;
+        private System.Windows.Forms.PictureBox faceCard;
+        private System.Windows.Forms.PictureBox kittyCards;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button passButton;
+        private System.Windows.Forms.PictureBox playerPlayCard;
+        private System.Windows.Forms.PictureBox opp1PlayCard;
+        private System.Windows.Forms.PictureBox partnersPlayCard;
+        private System.Windows.Forms.PictureBox opp2PlayCard;
+        private System.Windows.Forms.Label opp1DecisionLbl;
+        private System.Windows.Forms.Label partnerDecisionLbl;
+        private System.Windows.Forms.Label opp2DecisionLbl;
+        private System.Windows.Forms.Label playerDecisionLbl;
+        private System.Windows.Forms.Button orderUpButton;
     }
 }
 

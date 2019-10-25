@@ -7,24 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 using static EuchreTest1.ImportDLL;
 using static EuchreTest1.Dealer;
-
 namespace EuchreTest1
 {
     public partial class Form1 : Form
     {
-        public int PassCount { get; private set; }
         public Form1()
         {
             InitializeComponent();
             NewDeal();
+            FormClosing += Form1_Closing;
         }
         private void NewDeal()
         {
             Deal();
             ClearBoard();
-            GetImages();            
+            GetImages();
             DisplayDealer();
             DecisionLabels();
         }
@@ -42,14 +42,9 @@ namespace EuchreTest1
             opp1DecisionLbl.Visible = false;
             partnerDecisionLbl.Visible = false;
             opp2DecisionLbl.Visible = false;
-            clubsButton.Visible = false;
-            diamondsButton.Visible = false;
-            spadesButton.Visible = false;
-            heartsButton.Visible = false;
-            orderUpButton.Visible = true;
             faceCard.Visible = true;
             kittyCards.Visible = true;
-            PassCount = 0;
+            Bidding.PassCount = 0;
         }
         private void GetImages()
         {
@@ -91,12 +86,7 @@ namespace EuchreTest1
             partnerCard4.Image = images[PartnersCards()[4]];
             //the following two lines are always correct
             faceCard.Image = images[FaceCard()];
-            kittyCards.Image = images[32];
-            clubsButton.Image = images[49];
-            diamondsButton.Image = images[50];
-            spadesButton.Image = images[51];
-            heartsButton.Image = images[52];
-
+            kittyCards.Image = images[32];                     
         }
         private void DisplayDealer()
         {
@@ -135,12 +125,12 @@ namespace EuchreTest1
         private void DecisionLabels()
         {
             Console.WriteLine("Player's Pts: " + Convert.ToString(Bidding.BidPoints(PlayersCards(), playerDeal)));
-            if (Bidding.Bid(Bidding.BidPoints(PlayersCards(), playerDeal)) == 1)
+            if (Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal)) == 1)
             {
                 playerDecisionLbl.Text = "Pick it up!";
             }
 
-            else if (Bidding.Bid(Bidding.BidPoints(PlayersCards(), playerDeal)) == 2)
+            else if (Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal)) == 2)
             {
                 playerDecisionLbl.Text = "Alone!";
             }
@@ -151,12 +141,12 @@ namespace EuchreTest1
             }
 
             Console.WriteLine("Opp 1's Pts: " + Convert.ToString(Bidding.BidPoints(Opp1Cards(), opp1Deal)));
-            if (Bidding.Bid(Bidding.BidPoints(Opp1Cards(), opp1Deal)) == 1)
+            if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) == 1)
             {
                 opp1DecisionLbl.Text = "Pick it up!";
             }
 
-            else if (Bidding.Bid(Bidding.BidPoints(Opp1Cards(), playerDeal)) == 2)
+            else if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), playerDeal)) == 2)
             {
                 opp1DecisionLbl.Text = "Alone!";
             }
@@ -164,16 +154,17 @@ namespace EuchreTest1
             else
             {
                 opp1DecisionLbl.Text = "Pass";
+
             }
 
 
             Console.WriteLine("Partner's Pts: " + Convert.ToString(Bidding.BidPoints(PartnersCards(), partnerDeal)));
-            if (Bidding.Bid(Bidding.BidPoints(PartnersCards(), partnerDeal)) == 1)
+            if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) == 1)
             {
                 partnerDecisionLbl.Text = "Pick it up!";
             }
 
-            else if (Bidding.Bid(Bidding.BidPoints(PartnersCards(), playerDeal)) == 2)
+            else if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), playerDeal)) == 2)
             {
                 partnerDecisionLbl.Text = "Alone!";
             }
@@ -185,12 +176,12 @@ namespace EuchreTest1
 
 
             Console.WriteLine("Opp 2's Pts: " + Convert.ToString(Bidding.BidPoints(Opp2Cards(), opp2Deal)));
-            if (Bidding.Bid(Bidding.BidPoints(Opp2Cards(), opp2Deal)) == 1)
+            if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) == 1)
             {
                 opp2DecisionLbl.Text = "Pick it up!";
             }
 
-            else if (Bidding.Bid(Bidding.BidPoints(Opp2Cards(), playerDeal)) == 2)
+            else if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), playerDeal)) == 2)
             {
                 opp2DecisionLbl.Text = "Alone!";
             }
@@ -202,35 +193,24 @@ namespace EuchreTest1
 
             Console.WriteLine();
         }
-        private void playerCard0_Click(object sender, EventArgs e)
+        private void Passing()
         {
-            //playerPlayCard.Visible = true;
-            //playerPlayCard.Image = playerCard0.Image;
-        }
-        private void playerCard1_Click(object sender, EventArgs e)
-        {
-            //playerPlayCard.Visible = true;
-            //playerPlayCard.Image = playerCard1.Image;
-        }
-        private void playerCard2_Click(object sender, EventArgs e)
-        {
-            //playerPlayCard.Visible = true;
-            //playerPlayCard.Image = playerCard2.Image;
-        }
-        private void playerCard3_Click(object sender, EventArgs e)
-        {
-            //playerPlayCard.Visible = true;
-            //playerPlayCard.Image = playerCard3.Image;
-        }
-        private void playerCard4_Click(object sender, EventArgs e)
-        {
-            //playerPlayCard.Visible = true;
-            //playerPlayCard.Image = playerCard4.Image;
-        }
-        private void passButton_Click(object sender, EventArgs e)
-        {
-            PassCount++;
-            if(Game.turn < 3)
+            Bidding.PassCount++;
+
+            if (Bidding.PassCount > 4)
+            {
+                faceCard.Visible = false;
+                kittyCards.Visible = false;
+                orderUpButton.Visible = false;
+            }
+
+            if (Bidding.PassCount > 8)
+            {
+                NewDeal();
+                Bidding.PassCount = 0;
+            }
+
+            if (Game.turn < 3)
             {
                 Game.turn++;
             }
@@ -270,43 +250,38 @@ namespace EuchreTest1
                 opp1DecisionLbl.Visible = false;
                 partnerDecisionLbl.Visible = false;
                 opp2DecisionLbl.Visible = false;
+                var form = new Form2();
+                form.ShowDialog();
             }
-
-            if (PassCount > 4)
-            {
-                faceCard.Visible = false;
-                kittyCards.Visible = false;
-                orderUpButton.Visible = false;
-                clubsButton.Visible = true;
-                diamondsButton.Visible = true;
-                spadesButton.Visible = true;
-                heartsButton.Visible = true;
-
-                if(Bidding.DetermineSuit() == Suit.Clubs)
-                {
-                    clubsButton.Image = images[53];
-                }
-
-                else if (Bidding.DetermineSuit() == Suit.Diamonds)
-                {
-                    diamondsButton.Image = images[54];
-                }
-
-                else if (Bidding.DetermineSuit() == Suit.Spades)
-                {
-                    spadesButton.Image = images[55];
-                }
-
-                else if (Bidding.DetermineSuit() == Suit.Hearts)
-                {
-                    heartsButton.Image = images[56];
-                }
-            }
-
-            if (PassCount > 8)
-            {
-                NewDeal();
-            }
+        }
+        private void playerCard0_Click(object sender, EventArgs e)
+        {
+            //playerPlayCard.Visible = true;
+            //playerPlayCard.Image = playerCard0.Image;
+        }
+        private void playerCard1_Click(object sender, EventArgs e)
+        {
+            //playerPlayCard.Visible = true;
+            //playerPlayCard.Image = playerCard1.Image;
+        }
+        private void playerCard2_Click(object sender, EventArgs e)
+        {
+            //playerPlayCard.Visible = true;
+            //playerPlayCard.Image = playerCard2.Image;
+        }
+        private void playerCard3_Click(object sender, EventArgs e)
+        {
+            //playerPlayCard.Visible = true;
+            //playerPlayCard.Image = playerCard3.Image;
+        }
+        private void playerCard4_Click(object sender, EventArgs e)
+        {
+            //playerPlayCard.Visible = true;
+            //playerPlayCard.Image = playerCard4.Image;
+        }
+        private void passButton_Click(object sender, EventArgs e)
+        {
+            Passing();
         }
         private void orderUpButton_Click(object sender, EventArgs e)
         {
@@ -327,6 +302,10 @@ namespace EuchreTest1
         private void heartsButton_Click(object sender, EventArgs e)
         {
 
+        }
+        private void Form1_Closing(Object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

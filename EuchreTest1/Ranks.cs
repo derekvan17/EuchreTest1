@@ -28,7 +28,7 @@ namespace EuchreTest1
         {
             GetRanks();
 
-            cards.trump = Bidding.DetermineSuit();
+            cards.trump = Bidding.FaceCardSuit();
 
             if (cards.trump == Suit.Clubs)
             {
