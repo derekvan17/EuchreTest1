@@ -9,18 +9,17 @@ namespace EuchreTest1
 {
     class Bidding
     {
-        public static bool bidActive { get; set; }
+        public static bool BidActive { get; set; }
         public static int PassCount { get; set; }
         public static Suit FaceCardSuit()
         {
             return Suits.TrumpSuit(Dealer.FaceCard());
         }
-        
         public static int BidPoints(List<int> input, bool dealer)
         {
             int score = 0;
 
-            for(int i = 0; i <= 4; i++)
+            for (int i = 0; i <= 4; i++)
             {
                 if (Ranks.cards.isTrump[input[i]] == true)
                 {
@@ -43,13 +42,13 @@ namespace EuchreTest1
                     }
                 }
 
-                else if(Ranks.cards.value[input[i]] == 5)
+                else if (Ranks.cards.value[input[i]] == 5)
                 {
                     score++;
                 }
             }
 
-            if(dealer)
+            if (dealer)
             {
                 if (Ranks.cards.value[Dealer.FaceCard()] >= 5)
                 {
@@ -71,7 +70,6 @@ namespace EuchreTest1
             }
             return score;
         }
-
         public static int BidPoints2(List<int> input, bool dealer)
         {
             int score = 0;
@@ -107,9 +105,7 @@ namespace EuchreTest1
 
             return score;
         }
-
-
-        public static int BidDecision (int input)
+        public static int BidDecision(int input)
         {
             if (input >= 10)
             {
@@ -124,32 +120,6 @@ namespace EuchreTest1
             else
             {
                 return 0;
-            }
-        }
-
-        public static void Bid()
-        {
-            while (bidActive)
-            {
-                Thread.Sleep(1000);
-
-                PassCount++;
-                
-
-                if (Game.turn < 3)
-                {
-                    Game.turn++;
-                }
-
-                else
-                {
-                    Game.turn = 0;
-                }
-
-                Console.WriteLine("PassCount = " + Convert.ToString(PassCount));
-
-                Console.WriteLine("Turn = " + Convert.ToString(Game.turn));
-
             }
         }
      }

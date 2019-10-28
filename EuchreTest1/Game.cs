@@ -8,7 +8,7 @@ namespace EuchreTest1
 {
     class Game
     {
-        public static int turn;
+        public static int Turn;
         public static void RandomDeal()
         {
             Random rand = new Random();

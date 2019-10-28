@@ -20,6 +20,7 @@ namespace EuchreTest1
             NewDeal();
             FormClosing += Form1_Closing;
         }
+
         private void NewDeal()
         {
             Deal();
@@ -124,7 +125,7 @@ namespace EuchreTest1
         }
         private void DecisionLabels()
         {
-            Console.WriteLine("Player's Pts: " + Convert.ToString(Bidding.BidPoints(PlayersCards(), playerDeal)));
+            Console.WriteLine("Player: " + Convert.ToString(Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal))));
             if (Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal)) == 1)
             {
                 playerDecisionLbl.Text = "Pick it up!";
@@ -140,7 +141,7 @@ namespace EuchreTest1
                 playerDecisionLbl.Text = "Pass";
             }
 
-            Console.WriteLine("Opp 1's Pts: " + Convert.ToString(Bidding.BidPoints(Opp1Cards(), opp1Deal)));
+            Console.WriteLine("Opp 1: " + Convert.ToString(Bidding.BidDecision((Bidding.BidPoints(Opp1Cards(), opp1Deal)))));
             if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) == 1)
             {
                 opp1DecisionLbl.Text = "Pick it up!";
@@ -158,7 +159,7 @@ namespace EuchreTest1
             }
 
 
-            Console.WriteLine("Partner's Pts: " + Convert.ToString(Bidding.BidPoints(PartnersCards(), partnerDeal)));
+            Console.WriteLine("Partner: " + Convert.ToString(Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal))));
             if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) == 1)
             {
                 partnerDecisionLbl.Text = "Pick it up!";
@@ -167,6 +168,7 @@ namespace EuchreTest1
             else if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), playerDeal)) == 2)
             {
                 partnerDecisionLbl.Text = "Alone!";
+
             }
 
             else
@@ -175,7 +177,7 @@ namespace EuchreTest1
             }
 
 
-            Console.WriteLine("Opp 2's Pts: " + Convert.ToString(Bidding.BidPoints(Opp2Cards(), opp2Deal)));
+            Console.WriteLine("Opp 2: " + Convert.ToString(Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal))));
             if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) == 1)
             {
                 opp2DecisionLbl.Text = "Pick it up!";
@@ -195,64 +197,63 @@ namespace EuchreTest1
         }
         private void Passing()
         {
-            Bidding.PassCount++;
-
-            if (Bidding.PassCount > 4)
-            {
-                faceCard.Visible = false;
-                kittyCards.Visible = false;
-                orderUpButton.Visible = false;
-            }
-
-            if (Bidding.PassCount > 8)
+            if (Bidding.PassCount > 7)
             {
                 NewDeal();
-                Bidding.PassCount = 0;
             }
 
-            if (Game.turn < 3)
+            UpdateUserInterface();
+
+            if (Game.Turn < 3)
             {
-                Game.turn++;
+                Game.Turn++;
             }
 
             else
             {
-                Game.turn = 0;
+                Game.Turn = 0;
             }
 
-            if (Game.turn == 0)
+            if (Game.Turn == 3)
             {
-                playerDecisionLbl.Visible = false;
-                opp1DecisionLbl.Visible = true;
-                partnerDecisionLbl.Visible = false;
-                opp2DecisionLbl.Visible = false;
+                //var form = new Form2();
+                //form.ShowDialog();
             }
 
-            if (Game.turn == 1)
-            {
-                playerDecisionLbl.Visible = false;
-                opp1DecisionLbl.Visible = false;
-                partnerDecisionLbl.Visible = true;
-                opp2DecisionLbl.Visible = false;
-            }
+            UpdateUserInterface();
+            Bidding.PassCount++;
+        }
+        private void UpdateUserInterface()
+        {
+            UserInterface ui = new UserInterface();
+            faceCard.Visible = ui.ShouldKittyBeVisible(Bidding.PassCount);
+            kittyCards.Visible = ui.ShouldKittyBeVisible(Bidding.PassCount);
+            orderUpButton.Visible = ui.ShouldKittyBeVisible(Bidding.PassCount);
+            opp1DecisionLbl.Visible = ui.DecisionLabelVisible(0);
+            partnerDecisionLbl.Visible = ui.DecisionLabelVisible(1);
+            opp2DecisionLbl.Visible = ui.DecisionLabelVisible(2);
+            playerDecisionLbl.Visible = ui.DecisionLabelVisible(3);
 
-            if (Game.turn == 2)
+            Refresh();
+        }
+        private void passButton_Click(object sender, EventArgs e)
+        {
+            Bidding.BidActive = true;
+            while(Bidding.BidActive)
             {
-                playerDecisionLbl.Visible = false;
-                opp1DecisionLbl.Visible = false;
-                partnerDecisionLbl.Visible = false;
-                opp2DecisionLbl.Visible = true;
-            }
+                Passing();
+                Console.WriteLine(Convert.ToString(Game.Turn));
 
-            if (Game.turn == 3)
-            {
-                playerDecisionLbl.Visible = true;
-                opp1DecisionLbl.Visible = false;
-                partnerDecisionLbl.Visible = false;
-                opp2DecisionLbl.Visible = false;
-                var form = new Form2();
-                form.ShowDialog();
-            }
+                if (Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal)) > 0 && Game.Turn == 3 ||
+                    Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), playerDeal)) > 0 && Game.Turn == 0 ||
+                    Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), playerDeal)) > 0 && Game.Turn == 1 ||
+                    Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), playerDeal)) > 0 && Game.Turn == 2)
+                {
+                    Bidding.BidActive = false;
+                }
+                
+                Thread.Sleep(2000);
+            }                 
         }
         private void playerCard0_Click(object sender, EventArgs e)
         {
@@ -279,10 +280,6 @@ namespace EuchreTest1
             //playerPlayCard.Visible = true;
             //playerPlayCard.Image = playerCard4.Image;
         }
-        private void passButton_Click(object sender, EventArgs e)
-        {
-            Passing();
-        }
         private void orderUpButton_Click(object sender, EventArgs e)
         {
 
@@ -303,7 +300,7 @@ namespace EuchreTest1
         {
 
         }
-        private void Form1_Closing(Object sender, FormClosingEventArgs e)
+        private void Form1_Closing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }

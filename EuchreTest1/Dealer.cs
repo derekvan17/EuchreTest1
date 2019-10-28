@@ -17,28 +17,28 @@ namespace EuchreTest1
 
             if (playerDeal)
             {
-                Game.turn = 0;
+                Game.Turn = 0;
                 opp1Deal = true;
                 playerDeal = false;
             }
 
             else if (opp1Deal)
             {
-                Game.turn = 1;
+                Game.Turn = 1;
                 partnerDeal = true;
                 opp1Deal = false;
             }
 
             else if (partnerDeal)
             {
-                Game.turn = 2;
+                Game.Turn = 2;
                 opp2Deal = true;
                 partnerDeal = false;
             }
 
             else if(opp2Deal)
             {
-                Game.turn = 3;
+                Game.Turn = 3;
                 playerDeal = true;
                 opp2Deal = false;
             }
@@ -47,7 +47,6 @@ namespace EuchreTest1
             Deck.Shuffle();
             Bidding.FaceCardSuit();
             Ranks ranks = new Ranks();
-            //Bidding.PlayerBid(PlayersCards());
         }
 
         public static List<int> PlayersCards()
