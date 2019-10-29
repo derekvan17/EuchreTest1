@@ -147,7 +147,7 @@ namespace EuchreTest1
                 opp1DecisionLbl.Text = "Pick it up!";
             }
 
-            else if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), playerDeal)) == 2)
+            else if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) == 2)
             {
                 opp1DecisionLbl.Text = "Alone!";
             }
@@ -165,7 +165,7 @@ namespace EuchreTest1
                 partnerDecisionLbl.Text = "Pick it up!";
             }
 
-            else if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), playerDeal)) == 2)
+            else if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) == 2)
             {
                 partnerDecisionLbl.Text = "Alone!";
 
@@ -183,7 +183,7 @@ namespace EuchreTest1
                 opp2DecisionLbl.Text = "Pick it up!";
             }
 
-            else if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), playerDeal)) == 2)
+            else if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), partnerDeal)) == 2)
             {
                 opp2DecisionLbl.Text = "Alone!";
             }
@@ -216,8 +216,9 @@ namespace EuchreTest1
 
             if (Game.Turn == 3)
             {
-                //var form = new Form2();
-                //form.ShowDialog();
+                opp2DecisionLbl.Visible = false;
+                var form = new Form2();
+                form.ShowDialog();                
             }
 
             UpdateUserInterface();
@@ -232,7 +233,7 @@ namespace EuchreTest1
             opp1DecisionLbl.Visible = ui.DecisionLabelVisible(0);
             partnerDecisionLbl.Visible = ui.DecisionLabelVisible(1);
             opp2DecisionLbl.Visible = ui.DecisionLabelVisible(2);
-            playerDecisionLbl.Visible = ui.DecisionLabelVisible(3);
+            //playerDecisionLbl.Visible = ui.DecisionLabelVisible(3);
 
             Refresh();
         }
@@ -244,15 +245,15 @@ namespace EuchreTest1
                 Passing();
                 Console.WriteLine(Convert.ToString(Game.Turn));
 
-                if (Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal)) > 0 && Game.Turn == 3 ||
-                    Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), playerDeal)) > 0 && Game.Turn == 0 ||
-                    Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), playerDeal)) > 0 && Game.Turn == 1 ||
-                    Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), playerDeal)) > 0 && Game.Turn == 2)
+                if (//Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal)) > 0 && Game.Turn == 3 ||
+                    Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) > 0 && Game.Turn == 0 ||
+                    Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) > 0 && Game.Turn == 1 ||
+                    Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) > 0 && Game.Turn == 2)
                 {
                     Bidding.BidActive = false;
                 }
                 
-                Thread.Sleep(2000);
+                Thread.Sleep(500);
             }                 
         }
         private void playerCard0_Click(object sender, EventArgs e)
