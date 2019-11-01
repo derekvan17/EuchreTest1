@@ -46,6 +46,7 @@ namespace EuchreTest1
 
             Deck.Shuffle();
             Bidding.FaceCardSuit();
+            //Ranks ranks = new Ranks((Suit)FaceCard());
             Ranks ranks = new Ranks();
         }
 

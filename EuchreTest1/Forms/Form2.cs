@@ -17,7 +17,7 @@ namespace EuchreTest1
         {
             InitializeComponent();
 
-            if(Bidding.PassCount > 4)
+            if(Bidding.PassCount > 3)
             {
                 orderUpButton.Visible = false;
                 clubsButton.Visible = true;
@@ -60,6 +60,7 @@ namespace EuchreTest1
 
         private void orderUpButton_Click(object sender, EventArgs e)
         {
+            Bidding.BidActive = false;
             this.Close();
         }
 
@@ -67,11 +68,12 @@ namespace EuchreTest1
         {
             if (Bidding.FaceCardSuit() == Suit.Clubs)
             {
-                MessageBox.Show("Suit was turned down already! Pick another");
+                MessageBox.Show("Clubs was turned down already! Pick another trump suit.");
             }
 
             else
             {
+                Bidding.BidActive = false;
                 this.Close();
             }
         }
@@ -80,11 +82,12 @@ namespace EuchreTest1
         {
             if (Bidding.FaceCardSuit() == Suit.Diamonds)
             {
-                MessageBox.Show("Suit was turned down already! Pick another");
+                MessageBox.Show("Diamonds was turned down already! Pick another trump suit.");
             }
 
             else
             {
+                Bidding.BidActive = false;
                 this.Close();
             }
 
@@ -95,11 +98,12 @@ namespace EuchreTest1
         {
             if (Bidding.FaceCardSuit() == Suit.Spades)
             {
-                MessageBox.Show("Suit was turned down already! Pick another");
+                MessageBox.Show("Spades was turned down already! Pick another trump suit.");
             }
 
             else
             {
+                Bidding.BidActive = false;
                 this.Close();
             }
         }
@@ -108,11 +112,12 @@ namespace EuchreTest1
         {
             if (Bidding.FaceCardSuit() == Suit.Hearts)
             {
-                MessageBox.Show("Suit was turned down already! Pick another");
+                MessageBox.Show("Hearts was turned down already! Pick another trump suit.");
             }
 
             else
             {
+                Bidding.BidActive = false;
                 this.Close();
             }
         }

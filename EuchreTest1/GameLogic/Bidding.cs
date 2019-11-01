@@ -9,6 +9,7 @@ namespace EuchreTest1
 {
     class Bidding
     {
+        public static int ScoreTestClubs { get; set; }
         public static bool BidActive { get; set; }
         public static int PassCount { get; set; }
         public static Suit FaceCardSuit()
@@ -70,36 +71,35 @@ namespace EuchreTest1
             }
             return score;
         }
-        public static int BidPoints2(List<int> input, bool dealer)
+        public static int BidPoints2(List<int> input)
         {
             int score = 0;
 
             for (int i = 0; i <= 4; i++)
             {
-                if (Ranks.cards.isTrump[input[i]] == true)
-                {
-                    if (Ranks.cards.value[input[i]] >= 5)
-                    {
-                        score++;
-                        score++;
-                        score++;
-                    }
-
-                    else if (Ranks.cards.value[input[i]] >= 2)
-                    {
-                        score++;
-                        score++;
-                    }
-
-                    else
-                    {
-                        score++;
-                    }
-                }
-
-                else if (Ranks.cards.value[input[i]] == 5)
+                if (Ranks.cards.value[input[i]] < 6 || //all clubs
+                    Ranks.cards.value[input[i]] == 11 || //ace of diamonds
+                    Ranks.cards.value[input[i]] == 17 || //ace of spades
+                    Ranks.cards.value[input[i]] == 23 || //ace of hearts
+                    Ranks.cards.value[input[i]] == 14) //jack of spades
                 {
                     score++;
+
+                    if (Ranks.cards.value[input[i]] > 1) //face cards get 2 points
+                    {
+                        score++;
+
+                        if (Ranks.cards.value[input[i]] == 2) //jack gets 3 points
+                        {
+                            score++;
+                        }
+                    }
+
+                    //if (Ranks.cards.value[input[i]] == 14) //left bower gets 3 points
+                    //{
+                    //    score++;
+                    //    score++;
+                    //}
                 }
             }
 

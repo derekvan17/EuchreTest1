@@ -12,7 +12,6 @@ namespace EuchreTest1
         public bool[] isTrump;
         public List<Suit> suit;
         public List<int> value;
-
     }
 
     public enum Suit

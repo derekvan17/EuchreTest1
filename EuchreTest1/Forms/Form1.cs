@@ -125,7 +125,7 @@ namespace EuchreTest1
         }
         private void DecisionLabels()
         {
-            Console.WriteLine("Player: " + Convert.ToString(Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal))));
+            Console.WriteLine("Player: " + Convert.ToString(Bidding.BidPoints(PlayersCards(), playerDeal)));
             if (Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal)) == 1)
             {
                 playerDecisionLbl.Text = "Pick it up!";
@@ -141,7 +141,7 @@ namespace EuchreTest1
                 playerDecisionLbl.Text = "Pass";
             }
 
-            Console.WriteLine("Opp 1: " + Convert.ToString(Bidding.BidDecision((Bidding.BidPoints(Opp1Cards(), opp1Deal)))));
+            Console.WriteLine("Opp 1: " + Convert.ToString((Bidding.BidPoints(Opp1Cards(), opp1Deal))));
             if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) == 1)
             {
                 opp1DecisionLbl.Text = "Pick it up!";
@@ -159,7 +159,7 @@ namespace EuchreTest1
             }
 
 
-            Console.WriteLine("Partner: " + Convert.ToString(Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal))));
+            Console.WriteLine("Partner: " + Convert.ToString(Bidding.BidPoints(PartnersCards(), partnerDeal)));
             if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) == 1)
             {
                 partnerDecisionLbl.Text = "Pick it up!";
@@ -177,13 +177,13 @@ namespace EuchreTest1
             }
 
 
-            Console.WriteLine("Opp 2: " + Convert.ToString(Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal))));
+            Console.WriteLine("Opp 2: " + Convert.ToString((Bidding.BidPoints(Opp2Cards(), opp2Deal))));
             if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) == 1)
             {
                 opp2DecisionLbl.Text = "Pick it up!";
             }
 
-            else if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), partnerDeal)) == 2)
+            else if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) == 2)
             {
                 opp2DecisionLbl.Text = "Alone!";
             }
@@ -252,8 +252,16 @@ namespace EuchreTest1
                 {
                     Bidding.BidActive = false;
                 }
+
+                if (Bidding.PassCount > 3)
+                {
+                    Console.WriteLine(Convert.ToString(Bidding.BidPoints2(Opp1Cards())));
+                    Console.WriteLine(Convert.ToString(Bidding.BidPoints2(PartnersCards())));
+                    Console.WriteLine(Convert.ToString(Bidding.BidPoints2(Opp2Cards())));
+                    Console.WriteLine(Convert.ToString(Bidding.BidPoints2(PlayersCards())));
+                }
                 
-                Thread.Sleep(500);
+                Thread.Sleep(1500);
             }                 
         }
         private void playerCard0_Click(object sender, EventArgs e)
