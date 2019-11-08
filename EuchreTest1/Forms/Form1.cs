@@ -253,15 +253,45 @@ namespace EuchreTest1
                     Bidding.BidActive = false;
                 }
 
-                if (Bidding.PassCount > 3)
+                if (Bidding.PassCount == 4)
                 {
-                    Console.WriteLine(Convert.ToString(Bidding.BidPoints2(Opp1Cards())));
-                    Console.WriteLine(Convert.ToString(Bidding.BidPoints2(PartnersCards())));
-                    Console.WriteLine(Convert.ToString(Bidding.BidPoints2(Opp2Cards())));
-                    Console.WriteLine(Convert.ToString(Bidding.BidPoints2(PlayersCards())));
+                    Console.WriteLine();
+                    Console.Write("Player Clubs: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(PlayersCards(),Suit.Clubs)));
+                    Console.Write("Player Diamonds: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(PlayersCards(),Suit.Diamonds)));
+                    Console.Write("Player Spades: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(PlayersCards(),Suit.Spades)));
+                    Console.Write("Player Hearts: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(PlayersCards(), Suit.Hearts)));
+                    Console.Write("Opp1 Clubs: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(Opp1Cards(),Suit.Clubs)));
+                    Console.Write("Opp1 Diamonds: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(Opp1Cards(), Suit.Diamonds)));
+                    Console.Write("Opp1 Spades: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(Opp1Cards(), Suit.Spades)));
+                    Console.Write("Opp1 Hearts: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(Opp1Cards(), Suit.Hearts)));
+                    Console.Write("Partner Clubs: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(PartnersCards(),Suit.Clubs)));
+                    Console.Write("Partner Diamonds: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(PartnersCards(), Suit.Diamonds)));
+                    Console.Write("Partner Spades: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(PartnersCards(), Suit.Spades)));
+                    Console.Write("Partner Hearts: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(PartnersCards(), Suit.Hearts)));
+                    Console.Write("Opp2 Clubs: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(Opp2Cards(),Suit.Clubs)));
+                    Console.Write("Opp2 Diamonds: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(Opp2Cards(), Suit.Diamonds)));
+                    Console.Write("Opp2 Spades: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(Opp2Cards(), Suit.Spades)));
+                    Console.Write("Opp2 Hearts: ");
+                    Console.WriteLine("Total: " + Convert.ToString(Bidding.BidPoints2(Opp2Cards(), Suit.Hearts)));
+                    Console.WriteLine();
                 }
                 
-                Thread.Sleep(1500);
+                Thread.Sleep(750);
             }                 
         }
         private void playerCard0_Click(object sender, EventArgs e)

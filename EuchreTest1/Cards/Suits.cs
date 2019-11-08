@@ -77,13 +77,13 @@ namespace EuchreTest1
                 Ranks.cards.suit.Add(Suit.Hearts);
             }
         }
-
         public static void SwitchJacks(Suit input)
         {
             if (input == Suit.Clubs)
             {
                 Ranks.cards.suit[14] = Suit.Clubs;
                 Ranks.cards.isTrump[14] = true;
+
             }
             else if (input == Suit.Spades)
             {

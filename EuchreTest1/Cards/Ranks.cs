@@ -9,13 +9,14 @@ namespace EuchreTest1
     class Ranks
     {
         public static Cards cards;
-        public Ranks()
+
+        public Ranks(Suit suit)
         {
-            DetermineRank();
+            DetermineRank(suit);
             Suits.AssignSuit();
-            Suits.SwitchJacks(Suits.TrumpSuit(Dealer.FaceCard()));
+            Suits.SwitchJacks(suit);
         }
-        public static void GetRanks()
+        public void GetRanks()
         {
             cards.value = new List<int>();
 
@@ -24,11 +25,10 @@ namespace EuchreTest1
                 cards.value.Add(i);
             }
         }
-        public static List<int> DetermineRank()
+        public List<int> DetermineRank(Suit suit)
         {
             GetRanks();
-
-            cards.trump = Bidding.FaceCardSuit();
+            cards.trump = suit;
 
             if (cards.trump == Suit.Clubs)
             {

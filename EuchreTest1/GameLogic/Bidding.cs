@@ -19,7 +19,7 @@ namespace EuchreTest1
         public static int BidPoints(List<int> input, bool dealer)
         {
             int score = 0;
-
+            
             for (int i = 0; i <= 4; i++)
             {
                 if (Ranks.cards.isTrump[input[i]] == true)
@@ -71,40 +71,58 @@ namespace EuchreTest1
             }
             return score;
         }
-        public static int BidPoints2(List<int> input)
-        {
+        public static int BidPoints2(List<int> input, Suit suit)
+        {            
             int score = 0;
+
+            Cards cards2 = new Cards();
+            cards2.isTrump = new bool[24];
+            cards2.value = new List<int>();
+            cards2.trump = suit;
+            cards2.suit = new List<Suit>();
 
             for (int i = 0; i <= 4; i++)
             {
-                if (Ranks.cards.value[input[i]] < 6 || //all clubs
-                    Ranks.cards.value[input[i]] == 11 || //ace of diamonds
-                    Ranks.cards.value[input[i]] == 17 || //ace of spades
-                    Ranks.cards.value[input[i]] == 23 || //ace of hearts
-                    Ranks.cards.value[input[i]] == 14) //jack of spades
-                {
-                    score++;
+                Ranks ranks = new Ranks(suit);
 
-                    if (Ranks.cards.value[input[i]] > 1) //face cards get 2 points
+                if (Ranks.cards.isTrump[input[i]] == true)
+                {
+                    if (Ranks.cards.value[input[i]] >= 5)
                     {
                         score++;
+                        score++;
+                        score++;
+                        Console.Write("3* ");
+                    }   
 
-                        if (Ranks.cards.value[input[i]] == 2) //jack gets 3 points
-                        {
-                            score++;
-                        }
+                    else if (Ranks.cards.value[input[i]] >= 2)
+                    {
+                        score++;
+                        score++;
+                        Console.Write("2* ");
                     }
 
-                    //if (Ranks.cards.value[input[i]] == 14) //left bower gets 3 points
-                    //{
-                    //    score++;
-                    //    score++;
-                    //}
+                    else
+                    {
+                        score++;
+                        Console.Write("1* ");
+                    }
+                }
+
+                else if (Ranks.cards.value[input[i]] == 5)
+                {
+                    score++;
+                    Console.Write("1 ");
+                }
+
+                else
+                {
+                    Console.Write("0 ");
                 }
             }
-
             return score;
         }
+
         public static int BidDecision(int input)
         {
             if (input >= 10)
