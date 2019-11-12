@@ -100,6 +100,45 @@ namespace EuchreTest1
                 Ranks.cards.suit[8] = Suit.Hearts;
                 Ranks.cards.isTrump[8] = true;
             }
+        }        
+        public static void TrumpSuit2(Suit suit)
+        {
+            Ranks.cards.isTrump = new bool[24];
+
+            if (suit == Suit.Clubs)
+            {
+                for (int i = 0; i <= 5; i++)
+                {
+                    Ranks.cards.isTrump[i] = true;
+                }
+            }
+
+            else if (suit == Suit.Diamonds)
+            {
+                for (int i = 6; i <= 11; i++)
+                {
+                    Ranks.cards.isTrump[i] = true;
+                }
+
+            }
+
+            else if (suit == Suit.Spades)
+            {
+                for (int i = 12; i <= 17; i++)
+                {
+                    Ranks.cards.isTrump[i] = true;
+
+                }
+
+            }
+
+            else
+            {
+                for (int i = 18; i <= 23; i++)
+                {
+                    Ranks.cards.isTrump[i] = true;
+                }
+            }
         }
     }
 }

@@ -27,7 +27,7 @@ namespace EuchreTest1
             ClearBoard();
             GetImages();
             DisplayDealer();
-            DecisionLabels();
+            //DecisionLabels();
         }
         private void ClearBoard()
         {
@@ -125,8 +125,9 @@ namespace EuchreTest1
         }
         private void DecisionLabels()
         {
-            Console.WriteLine("Player: " + Convert.ToString(Bidding.BidPoints(PlayersCards(), playerDeal)));
-            if (Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal)) == 1)
+            #region playerDecisionLbl
+            //Console.WriteLine("Player: " + Convert.ToString(Bidding.BidPoints(PlayersCards(), playerDeal)));
+            /*if (Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal)) == 1)
             {
                 playerDecisionLbl.Text = "Pick it up!";
             }
@@ -139,61 +140,215 @@ namespace EuchreTest1
             else
             {
                 playerDecisionLbl.Text = "Pass";
-            }
+            }*/
+            #endregion
 
-            Console.WriteLine("Opp 1: " + Convert.ToString((Bidding.BidPoints(Opp1Cards(), opp1Deal))));
-            if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) == 1)
+            #region opp1DecisionLbl
+            //Console.WriteLine("Opp 1: " + Convert.ToString((Bidding.BidPoints(Opp1Cards(), opp1Deal))));
+            if (Bidding.PassCount < 4)
             {
-                opp1DecisionLbl.Text = "Pick it up!";
+                if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) == 1)
+                {
+                    opp1DecisionLbl.Text = "Pick it up!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) == 2)
+                {
+                    opp1DecisionLbl.Text = "Alone!";
+                }
+
+                else
+                {
+                    opp1DecisionLbl.Text = "Pass";
+                }
             }
 
-            else if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) == 2)
+            if (Bidding.PassCount >= 4)
             {
-                opp1DecisionLbl.Text = "Alone!";
-            }
+                if (Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Clubs)) == 1)
+                {
+                    opp1DecisionLbl.Text = "Clubs!";
+                }
 
-            else
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Clubs)) == 2)
+                {
+                    opp1DecisionLbl.Text = "Clubs Alone!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Diamonds)) == 1)
+                {
+                    opp1DecisionLbl.Text = "Diamonds!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Diamonds)) == 2)
+                {
+                    opp1DecisionLbl.Text = "Diamonds Alone!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Spades)) == 1)
+                {
+                    opp1DecisionLbl.Text = "Spades!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Spades)) == 2)
+                {
+                    opp1DecisionLbl.Text = "Spades Alone!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Hearts)) == 1)
+                {
+                    opp1DecisionLbl.Text = "Hearts!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Hearts)) == 2)
+                {
+                    opp1DecisionLbl.Text = "Hearts Alone!";
+                }
+
+                else
+                {
+                    opp1DecisionLbl.Text = "Pass";
+                }
+            }
+            #endregion
+
+            #region partnerDecisionLbl
+            //Console.WriteLine("Partner: " + Convert.ToString(Bidding.BidPoints(PartnersCards(), partnerDeal)));
+            if (Bidding.PassCount < 4)
             {
-                opp1DecisionLbl.Text = "Pass";
+                if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) == 1)
+                {
+                    partnerDecisionLbl.Text = "Pick it up!";
+                }
 
+                else if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) == 2)
+                {
+                    partnerDecisionLbl.Text = "Alone!";
+                }
+
+                else
+                {
+                    partnerDecisionLbl.Text = "Pass";
+                }
             }
 
-
-            Console.WriteLine("Partner: " + Convert.ToString(Bidding.BidPoints(PartnersCards(), partnerDeal)));
-            if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) == 1)
+            if (Bidding.PassCount >= 4)
             {
-                partnerDecisionLbl.Text = "Pick it up!";
-            }
+                if (Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Clubs)) == 1)
+                {
+                    partnerDecisionLbl.Text = "Clubs!";
+                }
 
-            else if (Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) == 2)
+                else if (Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Clubs)) == 2)
+                {
+                    partnerDecisionLbl.Text = "Clubs Alone!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Diamonds)) == 1)
+                {
+                    partnerDecisionLbl.Text = "Diamonds!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Diamonds)) == 2)
+                {
+                    partnerDecisionLbl.Text = "Diamonds Alone!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Spades)) == 1)
+                {
+                    partnerDecisionLbl.Text = "Spades!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Spades)) == 2)
+                {
+                    partnerDecisionLbl.Text = "Spades Alone!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Hearts)) == 1)
+                {
+                    partnerDecisionLbl.Text = "Hearts!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Hearts)) == 2)
+                {
+                    partnerDecisionLbl.Text = "Hearts Alone!";
+                }
+
+                else
+                {
+                    partnerDecisionLbl.Text = "Pass";
+                }
+            }
+            #endregion
+
+            #region opp2DecisionLbl
+            //Console.WriteLine("Opp 2: " + Convert.ToString((Bidding.BidPoints(Opp2Cards(), opp2Deal))));
+            if (Bidding.PassCount < 4)
             {
-                partnerDecisionLbl.Text = "Alone!";
+                if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) == 1)
+                {
+                    opp2DecisionLbl.Text = "Pick it up!";
+                }
 
+                else if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) == 2)
+                {
+                    opp2DecisionLbl.Text = "Alone!";
+                }
+
+                else
+                {
+                    opp2DecisionLbl.Text = "Pass";
+                }
             }
 
-            else
+            if (Bidding.PassCount >= 4)
             {
-                partnerDecisionLbl.Text = "Pass";
+                if (Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Clubs)) == 1)
+                {
+                    opp2DecisionLbl.Text = "Clubs!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Clubs)) == 2)
+                {
+                    opp2DecisionLbl.Text = "Clubs Alone!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Diamonds)) == 1)
+                {
+                    opp2DecisionLbl.Text = "Diamonds!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Diamonds)) == 2)
+                {
+                    opp2DecisionLbl.Text = "Diamonds Alone!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Spades)) == 1)
+                {
+                    opp2DecisionLbl.Text = "Spades!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Spades)) == 2)
+                {
+                    opp2DecisionLbl.Text = "Spades Alone!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Hearts)) == 1)
+                {
+                    opp2DecisionLbl.Text = "Hearts!";
+                }
+
+                else if (Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Hearts)) == 2)
+                {
+                    opp2DecisionLbl.Text = "Hearts Alone!";
+                }
+
+                else
+                {
+                    opp2DecisionLbl.Text = "Pass";
+                }
             }
-
-
-            Console.WriteLine("Opp 2: " + Convert.ToString((Bidding.BidPoints(Opp2Cards(), opp2Deal))));
-            if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) == 1)
-            {
-                opp2DecisionLbl.Text = "Pick it up!";
-            }
-
-            else if (Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) == 2)
-            {
-                opp2DecisionLbl.Text = "Alone!";
-            }
-
-            else
-            {
-                opp2DecisionLbl.Text = "Pass";
-            }
-
-            Console.WriteLine();
+            #endregion
         }
         private void Passing()
         {
@@ -221,6 +376,7 @@ namespace EuchreTest1
                 form.ShowDialog();                
             }
 
+            DecisionLabels();
             UpdateUserInterface();
             Bidding.PassCount++;
         }
@@ -243,14 +399,38 @@ namespace EuchreTest1
             while(Bidding.BidActive)
             {
                 Passing();
+                Console.Write(Convert.ToString(Bidding.PassCount + " "));
                 Console.WriteLine(Convert.ToString(Game.Turn));
+                
 
-                if (//Bidding.BidDecision(Bidding.BidPoints(PlayersCards(), playerDeal)) > 0 && Game.Turn == 3 ||
-                    Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) > 0 && Game.Turn == 0 ||
-                    Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) > 0 && Game.Turn == 1 ||
-                    Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) > 0 && Game.Turn == 2)
+                if (Bidding.PassCount < 4)
                 {
-                    Bidding.BidActive = false;
+                    if (Bidding.BidDecision(Bidding.BidPoints(Opp1Cards(), opp1Deal)) > 0 && Game.Turn == 0 ||
+                        Bidding.BidDecision(Bidding.BidPoints(PartnersCards(), partnerDeal)) > 0 && Game.Turn == 1 ||
+                        Bidding.BidDecision(Bidding.BidPoints(Opp2Cards(), opp2Deal)) > 0 && Game.Turn == 2)
+                    {
+                        Bidding.BidActive = false;
+                    }
+                }
+
+                if (Bidding.PassCount >= 4)
+                {
+                    if (Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(),Suit.Clubs)) > 0 && Game.Turn == 0||
+                        Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Diamonds)) > 0 && Game.Turn == 0 ||
+                        Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Spades)) > 0 && Game.Turn == 0 ||
+                        Bidding.BidDecision(Bidding.BidPoints2(Opp1Cards(), Suit.Hearts)) > 0 && Game.Turn == 0 ||
+                        Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Clubs)) > 0 && Game.Turn == 1 ||
+                        Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Diamonds)) > 0 && Game.Turn == 1 ||
+                        Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Spades)) > 0 && Game.Turn == 1 ||
+                        Bidding.BidDecision(Bidding.BidPoints2(PartnersCards(), Suit.Hearts)) > 0 && Game.Turn == 1 ||
+                        Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Clubs)) > 0 && Game.Turn == 2 ||
+                        Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Diamonds)) > 0 && Game.Turn == 2 ||
+                        Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Spades)) > 0 && Game.Turn == 2 ||
+                        Bidding.BidDecision(Bidding.BidPoints2(Opp2Cards(), Suit.Hearts)) > 0 && Game.Turn == 2)
+                    {
+                        Bidding.BidActive = false;
+                    }
+
                 }
 
                 if (Bidding.PassCount == 4)

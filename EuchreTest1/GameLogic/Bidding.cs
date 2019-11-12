@@ -75,15 +75,11 @@ namespace EuchreTest1
         {            
             int score = 0;
 
-            Cards cards2 = new Cards();
-            cards2.isTrump = new bool[24];
-            cards2.value = new List<int>();
-            cards2.trump = suit;
-            cards2.suit = new List<Suit>();
-
             for (int i = 0; i <= 4; i++)
             {
                 Ranks ranks = new Ranks(suit);
+                Suits.TrumpSuit2(suit);
+                Suits.SwitchJacks(suit);                
 
                 if (Ranks.cards.isTrump[input[i]] == true)
                 {
@@ -92,37 +88,36 @@ namespace EuchreTest1
                         score++;
                         score++;
                         score++;
-                        Console.Write("3* ");
+                        //Console.Write("3* ");
                     }   
 
                     else if (Ranks.cards.value[input[i]] >= 2)
                     {
                         score++;
                         score++;
-                        Console.Write("2* ");
+                        //Console.Write("2* ");
                     }
 
                     else
                     {
                         score++;
-                        Console.Write("1* ");
+                        //Console.Write("1* ");
                     }
                 }
 
                 else if (Ranks.cards.value[input[i]] == 5)
                 {
                     score++;
-                    Console.Write("1 ");
+                    //Console.Write("1 ");
                 }
 
                 else
                 {
-                    Console.Write("0 ");
+                    //Console.Write("0 ");
                 }
             }
             return score;
         }
-
         public static int BidDecision(int input)
         {
             if (input >= 10)

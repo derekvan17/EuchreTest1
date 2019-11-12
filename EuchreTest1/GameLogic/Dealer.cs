@@ -11,7 +11,6 @@ namespace EuchreTest1
     class Dealer
     {
         public static bool playerDeal, opp1Deal, partnerDeal, opp2Deal;
-
         public static void Deal()
         {
 
@@ -45,10 +44,9 @@ namespace EuchreTest1
                 
 
             Deck.Shuffle();
-            Bidding.FaceCardSuit();
+            //Bidding.FaceCardSuit();
             Ranks ranks = new Ranks(Suits.TrumpSuit(FaceCard()));
         }
-
         public static List<int> PlayersCards()
         {
             List<int> hand = new List<int>();
@@ -62,7 +60,6 @@ namespace EuchreTest1
 
             return hand;
         }
-
         public static List<int> Opp1Cards()
         {
             List<int> hand = new List<int>();
@@ -76,7 +73,6 @@ namespace EuchreTest1
 
             return hand;
         }
-
         public static List<int> Opp2Cards()
         {
             List<int> hand = new List<int>();
@@ -90,7 +86,6 @@ namespace EuchreTest1
 
             return hand;
         }
-
         public static List<int> PartnersCards()
         {
             List<int> hand = new List<int>();
@@ -104,9 +99,6 @@ namespace EuchreTest1
 
             return hand;
         }
-
-
-
         public static int FaceCard()
         {
             return Deck.deck[20];
